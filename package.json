@@ -1,11 +1,14 @@
 {
   "name": "hexo-deployer-ftp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "FTP deployer plugin for Hexo",
   "main": "index",
-  "keywords": ["website", "blog", "cms", "framework", "hexo", "ftp"],
+  "keywords": ["hexo", "ftp"],
   "author": "Florian Cargoët",
-  "repository" : "floriancargoet/hexo-deployer-ftp",
+  "repository" : {
+    "type": "git",
+    "url" : "http://github.com/floriancargoet/hexo-deployer-ftp.git"
+  },
   "license": {
     "type": "MIT"
   },
