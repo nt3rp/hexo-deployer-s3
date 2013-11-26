@@ -1,5 +1,7 @@
 var spawn = require('child_process').spawn;
 
+var public_dir = hexo.config.public_dir || './public';
+
 // run function which supports interactive commands
 function run (command, args, callback) {
   process.stdin.pause();
@@ -38,7 +40,7 @@ hexo.extend.deployer.register('ftp', function (args, callback) {
 
   var args = [
     '-e',
-    'mirror -R --ignore-time --delete -v ./public ' + config.root + '; bye',
+    'mirror -R --ignore-time --delete -v ' + public_dir + ' ' + config.root + '; bye',
     '-u',
     config.user,
     config.host
