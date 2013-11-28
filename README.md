@@ -1,4 +1,4 @@
-# FTP deployer plugin for [Hexo]
+# FTP deployer plugin for [Hexo](http://zespia.tw/hexo/)
 
 This plugin can deploy your blog via FTP.
 
