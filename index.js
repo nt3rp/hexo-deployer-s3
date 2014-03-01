@@ -1,52 +1,60 @@
-var spawn = require('child_process').spawn;
+var level = require('level')
+  , s3sync = require('s3-sync')
+  , readdirp = require('readdirp')
+
+
 
 var public_dir = hexo.config.public_dir || './public';
 
-// run function which supports interactive commands
-function run (command, args, callback) {
-  process.stdin.pause();
-  process.stdin.setRawMode(false);
 
-  var p = spawn(command, args, {
-    customFds: [0, 1, 2]
-  });
-  return p.on('exit', function() {
-    process.stdin.setRawMode(true);
-    process.stdin.resume();
-    return callback();
-  });
-};
-
-hexo.extend.deployer.register('ftp', function (args, callback) {
+hexo.extend.deployer.register('s3', function (args, callback) {
   var config = hexo.config.deploy;
 
-  if (!config.host || !config.user || !config.root){
+  if (!config.bucket || !config.aws_key || !config.aws_secret){
     var help = [
       'You should configure deployment settings in _config.yml first!',
       '',
       'Example:',
       '  deploy:',
-      '    type: ftp',
-      '    host: <host>',
-      '    user: <user>',
-      '    root: <root>',
+      '    type: s3',
+      '    bucket: <bucket>',
+      '    aws_key: <aws_key>',
+      '    aws_secret: <aws_secret>',
+      '    [concurrency]: <concurrency>',
       '',
-      'For more help, you can check the docs: ' + 'http://zespia.tw/hexo/docs/deployment.html'
+      'For more help, you can check the docs: ' + 'https://github.com/joshstrange/hexo-deployer-s3'
     ];
 
     console.log(help.join('\n'));
     return callback();
   }
 
-  var args = [
-    '-e',
-    'mirror -R --ignore-time --delete -v ' + public_dir + ' ' + config.root + '; bye',
-    '-u',
-    config.user,
-    config.host
-  ];
 
-  run('lftp', args, function (code) {
+  var files = readdirp({
+      root: public_dir
+    , directoryFilter: []
+  });
+
+  if(!config.concurrency)
+  {
+    config.concurrency = 8;
+  }
+
+  // Takes the same options arguments as `knox`,
+  // plus some additional options listed above
+  var uploader = s3sync({
+      key: config.aws_key
+    , secret: config.aws_secret
+    , bucket: config.bucket
+    , concurrency: config.concurrency
+  }).on('data', function(file) {
+    console.log(file.fullPath + ' -> ' + file.url)
+  }).on('end', function() {
+    console.log('Done!');
     callback();
   });
+
+  files.pipe(uploader);
+  
+
 });

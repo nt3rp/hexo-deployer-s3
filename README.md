@@ -1,45 +1,44 @@
-# FTP deployer plugin for [Hexo](http://zespia.tw/hexo/)
+# S3 deployer plugin for [Hexo](http://zespia.tw/hexo/)
 
-This plugin can deploy your blog via FTP.
+This plugin can deploy your blog via S3.
 
 ## Usage
 
 ### Install
 
 ```
-npm install hexo-deployer-ftp --save
+npm install hexo-deployer-s3 --save
 ```
-
-`lftp` is required. Install it with `apt-get install lftp` or `brew install lftp` depending on your OS.
 
 ### Enable
 
-Add `hexo-deployer-ftp` to `plugins` in `_config.yml`.
+Add `hexo-deployer-s3` to `plugins` in `_config.yml`.
 
 ``` yaml
 plugins:
-- hexo-deployer-ftp
+- hexo-deployer-s3
 ```
 
 ### Configure
 
-Add `host`, `user` and `root` to `deploy` in `_config.yml`.
+Add `bucket`, `aws_key` and `aws_secret` to `deploy` in `_config.yml`.
 
 ```
 deploy:
-  type: ftp
-  host: <ftp host>
-  user: <ftp user>
-  root: <path/to/your/blog/on/the/server>
+  type: s3
+  bucket: <S3 bucket>
+  aws_key: <AWS id key>
+  aws_secret: <AWS secret key>
+  concurrency: <number of connections> //Optional
 ```
 
 ### Disable
 
-Remove `hexo-deployer-ftp` from `plugins` in `_config.yml`.
+Remove `hexo-deployer-s3` from `plugins` in `_config.yml`.
 
 ``` yaml
 plugins:
-- hexo-deployer-ftp
+- hexo-deployer-s3
 ```
 
 ### Update
@@ -55,7 +54,7 @@ npm update
 Execute the following command. Don't forget to disable the plugin before uninstalling.
 
 ```
-npm uninstall hexo-deployer-ftp
+npm uninstall hexo-deployer-s3
 ```
 
 [Hexo]: http://zespia.tw/hexo

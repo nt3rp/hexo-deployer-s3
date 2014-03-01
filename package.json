@@ -1,13 +1,18 @@
 {
-  "name": "hexo-deployer-ftp",
+  "name": "hexo-deployer-s3",
   "version": "0.0.2",
-  "description": "FTP deployer plugin for Hexo",
+  "description": "AWS S3 deployer plugin for Hexo",
   "main": "index",
-  "keywords": ["hexo", "ftp"],
-  "author": "Florian Cargoët",
-  "repository" : {
+  "keywords": [
+    "hexo",
+    "s3",
+    "aws",
+    "deployer"
+  ],
+  "author": "Josh Strange",
+  "repository": {
     "type": "git",
-    "url" : "http://github.com/floriancargoet/hexo-deployer-ftp.git"
+    "url": "http://github.com/joshstrange/hexo-deployer-s3.git"
   },
   "license": {
     "type": "MIT"
@@ -16,5 +21,9 @@
     "hexo": ">= 1.0.0"
   },
   "dependencies": {
+    "readdirp": "^0.3.3",
+    "s3sync": "0.0.3",
+    "level": "^0.18.0",
+    "s3-sync": "^0.5.1"
   }
 }
