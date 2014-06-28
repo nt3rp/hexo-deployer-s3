@@ -31,8 +31,8 @@ hexo.extend.deployer.register('s3', function (args, callback) {
 
 
   var files = readdirp({
-      root: public_dir
-    , directoryFilter: []
+      root: public_dir,
+      entryType: 'both'
   });
 
   if(!config.concurrency)
