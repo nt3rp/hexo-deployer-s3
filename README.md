@@ -30,6 +30,7 @@ deploy:
   aws_key: <AWS id key>
   aws_secret: <AWS secret key>
   concurrency: <number of connections> //Optional
+  region: <region> //Optional, see https://github.com/LearnBoost/knox#region
 ```
 
 ### Disable

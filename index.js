@@ -21,6 +21,7 @@ hexo.extend.deployer.register('s3', function (args, callback) {
       '    aws_key: <aws_key>',
       '    aws_secret: <aws_secret>',
       '    [concurrency]: <concurrency>',
+      '    [region]: <region>          # See https://github.com/LearnBoost/knox#region',
       '',
       'For more help, you can check the docs: ' + 'https://github.com/joshstrange/hexo-deployer-s3'
     ];
@@ -47,6 +48,7 @@ hexo.extend.deployer.register('s3', function (args, callback) {
     , secret: config.aws_secret
     , bucket: config.bucket
     , concurrency: config.concurrency
+    , region: config.region
   }).on('data', function(file) {
     console.log(file.fullPath + ' -> ' + file.url)
   }).on('end', function() {
