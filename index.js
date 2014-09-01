@@ -10,6 +10,9 @@ var public_dir = hexo.config.public_dir || './public';
 hexo.extend.deployer.register('s3', function (args, callback) {
   var config = hexo.config.deploy;
 
+  config.aws_key = config.aws_key || process.env.AWS_KEY;
+  config.aws_secret = config.aws_secret || process.env.AWS_SECRET;
+
   if (!config.bucket || !config.aws_key || !config.aws_secret){
     var help = [
       'You should configure deployment settings in _config.yml first!',
@@ -18,8 +21,8 @@ hexo.extend.deployer.register('s3', function (args, callback) {
       '  deploy:',
       '    type: s3',
       '    bucket: <bucket>',
-      '    aws_key: <aws_key>',
-      '    aws_secret: <aws_secret>',
+      '    [aws_key]: <aws_key>        # Optional, if provided as environment variable',
+      '    [aws_secret]: <aws_secret>  # Optional, if provided as environment variable',
       '    [concurrency]: <concurrency>',
       '',
       'For more help, you can check the docs: ' + 'https://github.com/joshstrange/hexo-deployer-s3'
@@ -28,7 +31,6 @@ hexo.extend.deployer.register('s3', function (args, callback) {
     console.log(help.join('\n'));
     return callback();
   }
-
 
   var files = readdirp({
       root: public_dir,
