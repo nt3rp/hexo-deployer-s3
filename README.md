@@ -27,8 +27,8 @@ Add `bucket`, `aws_key` and `aws_secret` to `deploy` in `_config.yml`.
 deploy:
   type: s3
   bucket: <S3 bucket>
-  aws_key: <AWS id key>
-  aws_secret: <AWS secret key>
+  aws_key: <AWS id key> //Optional, if the environment variable `AWS_KEY` is set
+  aws_secret: <AWS secret key> //Optional, if the environment variable `AWS_SECRET` is set
   concurrency: <number of connections> //Optional
   region: <region> //Optional, see https://github.com/LearnBoost/knox#region
 ```
