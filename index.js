@@ -56,6 +56,8 @@ hexo.extend.deployer.register('s3', function (args, callback) {
   }).on('end', function() {
     console.log('Done!');
     callback();
+  }).on('fail', function(err) {
+    console.log(err)
   });
 
   files.pipe(uploader);
