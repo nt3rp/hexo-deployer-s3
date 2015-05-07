@@ -1,61 +1,32 @@
-# S3 deployer plugin for [Hexo](http://zespia.tw/hexo/)
+# hexo-deployer-s3 
 
-This plugin can deploy your blog via S3.
+Amazon S3 deployer plugin for [Hexo](http://hexo.io/)
 
-## Usage
+## Installation
 
-### Install
-
-```
-npm install hexo-deployer-s3 --save
+``` bash
+$ npm install git://git@github.com/nt3rp/hexo-deployer-s3.git --save
 ```
 
-### Enable
+## Options
 
-Add `hexo-deployer-s3` to `plugins` in `_config.yml`.
+You can configure this plugin in `_config.yml`.
 
 ``` yaml
-plugins:
-- hexo-deployer-s3
-```
-
-### Configure
-
-Add `bucket`, `aws_key` and `aws_secret` to `deploy` in `_config.yml`.
-
-```
+# You can use this:
 deploy:
   type: s3
   bucket: <S3 bucket>
-  aws_key: <AWS id key> //Optional, if the environment variable `AWS_KEY` is set
-  aws_secret: <AWS secret key> //Optional, if the environment variable `AWS_SECRET` is set
-  concurrency: <number of connections> //Optional
-  region: <region> //Optional, see https://github.com/LearnBoost/knox#region
+  aws_key: <AWS id key>  // Optional, if the environment variable `AWS_KEY` is set
+  aws_secret: <AWS secret key>  // Optional, if the environment variable `AWS_SECRET` is set
+  concurrency: <number of connections> // Optional
+  region: <region>  // Optional, see https://github.com/LearnBoost/knox#region
 ```
 
-### Disable
+## Contributors
 
-Remove `hexo-deployer-s3` from `plugins` in `_config.yml`.
+- Josh Strange ([joshstrange](https://github.com/joshstrange); original implementation)
 
-``` yaml
-plugins:
-- hexo-deployer-s3
-```
+## License
 
-### Update
-
-Execute the following command.
-
-```
-npm update
-```
-
-### Uninstall
-
-Execute the following command. Don't forget to disable the plugin before uninstalling.
-
-```
-npm uninstall hexo-deployer-s3
-```
-
-[Hexo]: http://zespia.tw/hexo
+MIT
