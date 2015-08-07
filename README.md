@@ -5,7 +5,7 @@ Amazon S3 deployer plugin for [Hexo](http://hexo.io/)
 ## Installation
 
 ``` bash
-$ npm install git://git@github.com/nt3rp/hexo-deployer-s3.git --save
+$ npm install hexo-deployer-s3 --save
 ```
 
 ## Options
