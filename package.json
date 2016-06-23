@@ -1,6 +1,6 @@
 {
   "name": "hexo-deployer-s3",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Amazon S3 deployer plugin for Hexo",
   "main": "index",
   "keywords": [
@@ -10,10 +10,16 @@
     "deployer"
   ],
   "author": "Nicholas Terwoord <nicholas.terwoord+code@gmail.com>",
-  "contributors": [{
-    "name": "Josh Strange",
-    "email": "josh@joshstrange.com"
-  }],
+  "contributors": [
+    {
+      "name": "Josh Strange",
+      "email": "josh@joshstrange.com"
+    },
+    {
+      "name": "Jack Guy",
+      "email": "jack@thatguyjackguy.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "http://github.com/nt3rp/hexo-deployer-s3.git"
@@ -25,9 +31,7 @@
     "hexo": "3.x"
   },
   "dependencies": {
-    "chalk": "^1.0.0",
-    "level": "^0.18.0",
-    "readdirp": "^0.3.3",
-    "s3-sync": "^0.5.1"
+    "chalk": "^1.1.1",
+    "s3": "^4.4.0"
   }
 }
