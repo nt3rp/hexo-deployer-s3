@@ -27,9 +27,8 @@ deploy:
 
 ``` yaml
 deploy:
-  type: s3-cloudfront
+  type: s3
   bucket: my-site-bucket
-  cf_distribution: mydistributionid
   headers: {CacheControl: 'max-age=604800, public'}
 ```
 
