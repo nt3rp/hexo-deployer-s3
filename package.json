@@ -1,6 +1,6 @@
 {
   "name": "hexo-deployer-s3",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "description": "Amazon S3 deployer plugin for Hexo",
   "main": "index",
   "keywords": [
