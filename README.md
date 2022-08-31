@@ -25,6 +25,7 @@ deploy:
   headers: <headers in JSON format> // pass any headers to S3, usefull for metadata cache setting of Hexo assets
   prefix: <prefix> // Optional, prefix ending in /
   delete_removed: <true|false> // if true will delete removed files from S3. Default: true
+  endpoint: <endpoint> // Optional, for S3 compatiable services
 ```
 
 If you installed the AWS command-line tool and provided your credentials via `aws configure`,
